@@ -19,9 +19,8 @@ if [ "${GRAPHITE_PORT}" = "**ChangeMe**" ]; then
 fi
 
 echo "=> Configuring GRAPHITE"
-sed -i -e "s/<--PROTO-->/${GRAPHITE_PROTO}/g" \
-    -e "s/<--ADDR-->/${GRAPHITE_HOST}/g" \
-    -e "s/<--PORT-->/${GRAPHITE_PORT}/g" /app/config.js
+sed -i -e "s/<--GRAPHITE_ADDR-->/${GRAPHITE_HOST}/g" \
+    -e "s/<--GRAPHITE_PORT-->/${GRAPHITE_PORT}/g" /app/config.js
 
 touch /.graphite_configured
 echo "=> GRAPHITE has been configured as follows:"
