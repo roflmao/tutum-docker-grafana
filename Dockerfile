@@ -1,10 +1,10 @@
 FROM tutum/nginx
 MAINTAINER Feng Honglin <hfeng@tutum.co>
 
-ENV GRAFANA_VERSION 1.7.0
+ENV GRAFANA_VERSION 1.8.1
 
 RUN apt-get update && \
-    apt-get install -y wget pwgen apache2-utils && \
+    apt-get install -y nano wget pwgen apache2-utils && \
     wget http://grafanarel.s3.amazonaws.com/grafana-${GRAFANA_VERSION}.tar.gz -O grafana.tar.gz && \
     tar zxf grafana.tar.gz && \
     rm grafana.tar.gz && \
@@ -15,6 +15,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ADD config.js /app/config.js
+ADD config.js.sample /app/config-sample.js
 ADD default /etc/nginx/sites-enabled/default
 
 # Environment variables for HTTP AUTH
